@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Booking</title>
+  <link rel="icon" type="image/png" href="VITANOVA_Logo_CROP.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            <img src="VITANOVA_Logo_CROP.png" alt="logo">
+        </div>
+        <div class="hamburger" aria-label="Menu" aria-expanded="false">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="/home.html">Home</a></li>
+                <li><a href="/pharmacy.html">Pharmacy</a></li>
+                <li><a href="/telemedicine.html">Telemedicine</a></li>
+                <li><a href="/appoinment.html">Appointments</a></li>
+                <li><a href="/emergency.html">Emergency</a></li>
+            </ul>
+        </div>
+    </nav>
+  <div class="appointment-card">
+    <h1>Book an Appointment</h1>
+    <form id="appointmentForm">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+      <label for="specialty">Select Doctor's Specialty</label>
+      <select id="specialty" name="specialty" required>
+        <option value="">-- Select --</option>
+        <option value="Cardiologist">Cardiologist</option>
+        <option value="Gynaecologist">Gynaecologist</option>
+        <option value="Neurologist">Neurologist</option>
+        <option value="Psychiatrist">Psychiatrist</option>
+      </select>
+
+      <label for="date">Date</label>
+      <input type="date" id="date" name="date" required>
+
+      <label for="time">Time</label>
+      <input type="time" id="time" name="time" required>
+
+      <button type="submit">Book Appointment</button>
+    </form>
+    <div id="confirmationMessage" class="message"></div>
+  </div>
+
+  <script>
+    document.getElementById("appointmentForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      const name = document.getElementById("name").value;
+      const specialty = document.getElementById("specialty").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      document.getElementById("confirmationMessage").textContent = `Appointment booked for ${name} with a ${specialty} on ${date} at ${time}`;
+      this.reset();
+    });
+  </script>
+</body>
+</html>
